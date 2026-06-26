@@ -64,7 +64,7 @@ Description=PiTempMonitor Python Script
 After=multi-user.target
 
 [Service]
-User=kevpi
+User=your_username
 WorkingDirectory=/home/your_username/PiTempMonitor
 ExecStart=/usr/bin/python3 /home/your_username/PiTempMonitor/temp_bot.py
 Restart=always
