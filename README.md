@@ -2,7 +2,7 @@
 
 PiTempMonitor is a project that demonstrates how to run a Python application continuously on a Raspberry Pi using systemd. The python script runs the `vcgencmd measure_temp` terminal command every 10 seconds and measures the Raspberry Pi temperature.
 
-Note that the following process I am explaining is done on Raspberry Pi 64-bit OS Lite, but I am assuming it would work in any other versions.
+Note that the following process I am explaining is done on Raspberry Pi 64-bit OS Lite, but I am assuming it would work in any other similar versions.
 
 ## Installation
 
