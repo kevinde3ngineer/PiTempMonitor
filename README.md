@@ -15,13 +15,13 @@ sudo apt install git -y
 
 ## Cloning The Repo
 
-Copy the HTTPS of the repository (https://github.com/kevinde3ngineer/PiTempMonitor.git) and use the following command to clone the repository into your Raspberry Pi.
+Copy the HTTPS of the repository `https://github.com/kevinde3ngineer/PiTempMonitor.git` and use the following command to clone the repository into your Raspberry Pi.
 
 ```bash
-git clone https://github.com/kevinde3ngineer/Temp_Notifier.git
+git clone https://github.com/kevinde3ngineer/PiTempMonitor.git
 ```
 
-The repository should be located in `/home/your_username/Temp_Notifier` and the script in the repository should be located in `/home/your_username/Temp_Notifier/temp_bot.py`
+The repository should be located in `/home/your_username/PiTempMonitor` and the script in the repository should be located in `/home/your_username/PiTempMonitor/temp_bot.py`
 
 ## Testing
 
@@ -29,7 +29,7 @@ Now that you have the repo, check whether the python script works or not.
 
 Enter the repo folder:
 ```bash
-cd ~/Temp_Notifier
+cd ~/PiTempMonitor
 ```
 
 Comfirm the script file exist by checking for `temp_bot.py`:
@@ -45,28 +45,28 @@ python3 temp_bot.py
 ## Create The Systemd
 
 ```bash
-sudo nano /etc/systemd/system/temp_notifier.service
+sudo nano /etc/systemd/system/pitempmonitor.service
 ```
 - `sudo` - run as administrator
 - `nano` - open the terminal text editor
 - `/etc/systemmd/system` - where the custom system services live
-- `temp_notifier.service` - name of our service
+- `pitempmonitor.service` - name of our service
 
 ## Create The Service File
 
 After you entered the terminal command above you will need to write the service file for it.
 
-Remember to change the info to your own info.
+Remember to change the info to your own info (ex. `your_username`)
 
 ```bash
 [Unit]
-Description=Temp Notifier Python Script
+Description=PiTempMonitor Python Script
 After=multi-user.target
 
 [Service]
 User=kevpi
-WorkingDirectory=/home/kevpi/Temp_Notifier
-ExecStart=/usr/bin/python3 /home/kevpi/Temp_Notifier/temp_bot.py
+WorkingDirectory=/home/your_username/PiTempMonitor
+ExecStart=/usr/bin/python3 /home/your_username/PiTempMonitor/temp_bot.py
 Restart=always
 RestartSec=5
 
@@ -76,8 +76,8 @@ WantedBy=multi-user.target
 - `Description` is the label for the service
 - `After=multi-user.target` tells systemd to wait until the PI is at the normal boot stage before starting the script
 - `User=your_username` run the script under your account (remember to change "your_username" with your actual info)
-- `WorkingDirectory=/home/kevpi/Temp_Notifier` brings us in the Temp_Notifier section (basically auto running `cd ~/Temp_Notifier`)
-- `ExecStart=/usr/bin/python3 /home/kevpi/Temp_Notifier/temp_bot.py` is the actual command systemd runs
+- `WorkingDirectory=/home/your_username/PiTempMonitor` brings us in the Temp_Notifier section (basically auto running `cd ~/Temp_Notifier`)
+- `ExecStart=/usr/bin/python3 /home/your_username/PiTempMonitor/temp_bot.py` is the actual command systemd runs
 - `Restart=always` is for if the script crashes or exits, systemd should start it again
 - `RestartSec=5` is my arbitrary number for waiting before restarting it
 - `WantedBy=multi-user.target` allows the service to be enabled so it starts during normal boot
@@ -96,52 +96,52 @@ sudo systemctl daemon-reload
 
  Enable the service for startup on boot:
  ```bash
-sudo systemctl enable temp_notifier.service
+sudo systemctl enable pitempmonitor.service
 ```
 
 Start the service:
 ``` bash
-sudo systemctl start temp_notifier.service
+sudo systemctl start pitempmonitor.service
 ```
 
 ## Commands
 
 To check that the service is running:
 ```bash
-sudo systemctl status temp_notifier.service
+sudo systemctl status pitempmonitor.service
 ```
 
 Watch the live output/logs:
 ```bash
-journalctl -u temp_notifier.service -f
+journalctl -u pitempmonitor.service -f
 ```
 
 Disable the service: (stops it from auto-starting on boot)
 ```bash
-(stops it from auto-starting on boot)
+sudo systemctl disable pitempmonitor.service
 ```
 
 Stop the service: (stops the service right now)
 ```bash
-sudo systemctl stop temp_notifier.service
+sudo systemctl stop pitempmonitor.service
 ```
 
 Restart the service:
 ```bash
-sudo systemctl restart temp_notifier.service
+sudo systemctl restart pitempmonitor.service
 ```
 
 How to delete the service: (Warning)
 ```bash
-sudo systemctl stop temp_notifier.service
-sudo systemctl disable temp_notifier.service
-sudo rm /etc/systemd/system/temp_notifier.service
+sudo systemctl stop pitempmonitor.service
+sudo systemctl disable pitempmonitor.service
+sudo rm /etc/systemd/system/pitempmonitor.service
 sudo systemctl daemon-reload
 ```
 
 ## Note From Dev
 
-This is my first ever project on GitHub and this was really more of a test for my future applications, but I am super proud of the results. Special thanks to @stuffman0001 for verifying every step of the process
+This is my first ever project on GitHub and so this is really big to me. Special thanks to @stuffman0001 for verifying every step of the process. Note that the this `README.md` may have typos, but I tried my best to make sure there are none.
 
 
 
