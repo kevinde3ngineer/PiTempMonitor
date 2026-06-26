@@ -141,7 +141,7 @@ sudo systemctl daemon-reload
 
 ## Note From Dev
 
-This is my first ever project on GitHub and so this is really big to me. Special thanks to @stuffman0001 for verifying every step of the process. Note that the this `README.md` may have typos, but I tried my best to make sure there are none.
+This is my first ever public project on GitHub and so this is really big to me. Special thanks to @stuffman0001 for verifying every step of the process. Note that the this `README.md` may have typos, but I tried my best to make sure there are none.
 
 
 
