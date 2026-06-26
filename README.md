@@ -141,7 +141,7 @@ sudo systemctl daemon-reload
 
 ## Note From Dev
 
-Special thanks to @stuffman0001 for verifying every step of the process. Note that `README.md` may have typos, but I tried my best to check. This project demonstrates how to run python applications countinously on a Raspberry Pi. You can obviously now make your own iteration with your own python application.
+Special thanks to @stuffman0001 for verifying the process. Note that `README.md` may have typos, but I tried my best to check. This project demonstrates how to run python applications countinously on a Raspberry Pi. You can obviously now make your own iteration with your own python application.
 
 
 
