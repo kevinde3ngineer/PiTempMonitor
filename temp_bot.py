@@ -1,4 +1,4 @@
-# kevinde3ngineer Temp_Notifier Python Script
+# kevinde3ngineer temp_bot Python Script
 
 import subprocess
 import time
